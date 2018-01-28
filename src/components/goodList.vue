@@ -26,8 +26,8 @@
 		</ul>
 		<div class="goods">
 			<ul v-infinite-scroll="loadMore"
-  				infinite-scroll-disabled="loading"
-  				infinite-scroll-distance="10">
+  infinite-scroll-disabled="loading"
+  infinite-scroll-distance="0">
 				<li v-for="item in list">
 					<p class="pic"><img :src="item.img" /></p>
 					<p class="intro">{{item.title}}</p>
@@ -57,35 +57,40 @@ export default{
 	},
 	methods:{
 		loadMore() {
+			console.log("12")
 		  this.loading = true;
 		  setTimeout(() => {
-		    this.getData();
-			let last = this.list[this.list.length - 1];
-		    for (let i = 1; i <= 10; i++) {
-		      this.list.push(last + i);
-		    }
+		    
+//			let last = this.list[this.list.length - 1];
+//		    for (let i = 1; i <= 10; i++) {
+//		      this.list.push(last + i);
+//		    }
+			this.getData();
 		    this.loading = false;
 		  }, 2500);
 		},
 		
 		getData(){
-			this.loading=true;
+			if(this.list.length<31){
+				
+			
 			axios.get(`/search/?e=222&page=${this.page+1}`)
 			.then((res)=>{
-	//			console.log(res);								
+				console.log(res);
+				this.list = this.list.concat(res.data.result.data);
 				var lengths = this.list.length;
-				for(var i = 0;i < lengths;i ++){
+				for(var i = this.page*20;i < lengths;i ++){
 					this.list[i].img = "http://image.loho88.com/" + this.list[i].img;
 				}
 				console.log(this.list);
 				this.page++;
-				this.list = res.data.result.data;
-				this.loading=false;
+				
 			})
+			}
 		}
 	},
 	mounted(){
-		this.getData();
+		//this.getData();
 		
 	}
 }	
