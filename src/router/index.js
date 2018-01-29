@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import top from '@/components/top'
+import shouye from '@/components/shouye'
 import goodBuying from '@/components/goodBuying'
 import goodService from '@/components/goodService'
 import goodTesting from '@/components/goodTesting'
@@ -16,8 +16,8 @@ export default new Router({
   routes: [
   {							
       path: '/',
-      name: 'top',
-      component:top 
+      name: 'shouye',
+      component:shouye 
     },
     {							
       path: '/goodBuying',
