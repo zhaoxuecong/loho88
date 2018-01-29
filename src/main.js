@@ -5,7 +5,6 @@ import App from './App'
 import MintUI from 'mint-ui'
 import 'mint-ui/lib/style.css'
 import router from './router'
-import './iconfont/iconfont.css'
 
 
 //import store from './vuex'

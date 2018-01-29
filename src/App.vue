@@ -18,6 +18,8 @@ export default {
 </script>
 
 <style>
+	@import '../src/assets/css/swiper.min.css'; 
+@import './assets/iconfont/iconfont.css';
 	*{margin:0;padding:0;}
 	a{text-decoration: none;}
 	li{list-style:none;}
@@ -27,6 +29,7 @@ export default {
 	}
 body{font-size:16px;}
 	#app{height:100%;}
-	
+	.swiper-slide>img{width:100%;display:block;}
+
 
 </style>
