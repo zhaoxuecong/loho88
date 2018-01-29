@@ -57,7 +57,7 @@ export default{
 	},
 	methods:{
 		loadMore() {
-			console.log("12")
+			
 		  this.loading = true;
 		  setTimeout(() => {
 		    
