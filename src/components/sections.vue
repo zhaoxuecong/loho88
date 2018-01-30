@@ -354,7 +354,7 @@
 		</div>
 	
 	<!----加载更多--->
-		<div class="loadMore" @click="loadMore()" :class="{loadMores:flag}">
+		<div class="loadMore" @click="loadMore()">
 			<span v-model="mesg">{{mesg}}</span>
 		</div>
 		
