@@ -1,11 +1,10 @@
 <template>
-	<div class="box">
+	<div id="box">
 		<top></top>
 		<sections></sections>
 		<foot></foot>	
 	</div>	
 </template>
-
 <script>
 		
 import top from './top';
@@ -29,5 +28,6 @@ export default{
 </script>
 
 <style>
-	.box{height:100%;display:flex;flex-direction: column;}
+	#box{height:100%;display:flex;flex-direction: column;}
 </style>
+

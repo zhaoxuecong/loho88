@@ -15,7 +15,8 @@ module.exports = {
             target: 'http://m.loho88.com', //目标服务器
             changeOrigin: true, //开启代理
             pathRewrite: { '^/': '/' }  //对访问路径进行替换操作
-        }
+       },
+
     },
 
     // Various Dev Server settings
