@@ -29,20 +29,27 @@
   infinite-scroll-disabled="loading"
   infinite-scroll-distance="0">
 				<li v-for="item in list">
+					<router-link :to="{name:'detail', params:{fid: item.goodsId}}">
 					<p class="pic"><img :src="item.img" /></p>
 					<p class="intro">{{item.title}}</p>
 					<p class="shop">
 						<span class="price">￥{{item.price}}</span>
 						<span class="num">{{item.salesNum}}人已买</span>
 					</p>
+					</router-link>
 				</li>
 			</ul>
 		</div>
+		<div class="text-center">
+			<span>已经到底部了</span>
+		</div>
+		<backtop　:scrollmyself = 'true'></backtop>
 	</div>
 </div>
 </template>
 
 <script>
+import backtop from './backtop';
 import axios from 'axios';
 import { InfiniteScroll } from 'mint-ui';
 export default{
@@ -54,6 +61,9 @@ export default{
 			page:0,
 			loading:false
 		}
+	},
+	components:{
+		backtop
 	},
 	methods:{
 		loadMore() {

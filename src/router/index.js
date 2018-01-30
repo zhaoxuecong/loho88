@@ -6,6 +6,7 @@ import goodService from '@/components/goodService'
 import goodTesting from '@/components/goodTesting'
 import goodMy from '@/components/goodMy'
 import goodList from '@/components/goodList'
+import detail from '@/components/detail'
 import goodRegister from '@/components/goodRegister'
 import goodCart from '@/components/goodCart'
 
@@ -43,6 +44,11 @@ export default new Router({
       path: '/goodList', 
       name: 'goodList',
       component: goodList
+    },
+    {							
+      path: '/detail/:fid', 
+      name: 'detail',
+      component: detail
     },
     {							
       path: '/goodRegister', 
