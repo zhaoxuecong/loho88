@@ -1,0 +1,228 @@
+
+.goodTesting{
+    height:100%;
+    display:flex;
+    flex-direction: column;
+    background: #f2f2f2;
+    //头部
+    header{
+        width:100%; 
+        height:60px;
+        background:#fff;
+        display: flex;
+        justify-content:space-around;
+        border-bottom:1px solid #ccc;
+        
+        .left{
+            flex: 1;
+            height:60px;
+            line-height:60px;
+            
+            .iconfont{
+                font-size:20px;
+                margin-left:0.1rem;
+            }
+        }
+        .middle{
+            flex: 1;
+            height:60px;
+            line-height:60px;
+        }
+        .right{
+            flex: 1;
+            height:60px;
+            line-height:60px;
+            display: flex;
+            justify-content: space-around;
+            
+            .iconfont:nth-child(1){
+                font-size:28px;              
+            }
+            
+            .iconfont:nth-child(2){
+                font-size:20px;
+               
+            }
+        }
+    }
+    //主体部分
+    section{
+        width:100%;
+        display: flex;
+        flex: 1;
+        overflow-x:auto;
+        overflow: hidden;
+        overflow-y:auto;
+        flex-direction: column;
+        
+        nav{
+            width:100%;
+            height:50px;
+            border-bottom:1px solid #F4F4F4;
+            background: #fff;
+            
+            .list{
+                height:50px;
+                width:50%;
+                float:left;
+                position: relative;
+                border-bottom:2px solid #f00;
+                
+                .bor{
+                    width:100%;
+                    height:20px;
+                    line-height:20px;
+                    text-align:center;
+                    box-sizing: border-box;
+                    border-right:1px solid #ccc;
+                    position: absolute;
+                    top:50%;
+                    margin-top:-10px;
+                    
+                    span{
+                        color:red;
+                    }
+                }
+            }
+            .maps{
+                height:50px;
+                width:50%;
+                float:left; 
+                line-height:50px;
+                text-align:center;
+                
+                span{
+                    
+                }
+            }
+        }
+        
+        .odiv{
+            width:100%;
+            height:40px;
+            display: flex;
+            background: #fff;
+            margin:0.1rem 0;
+            justify-content: space-around;
+                      
+            .odivLeft{
+                position: relative;
+                height:100%;
+                width:2rem;               
+                p{
+                    height:20px;
+                    width:100%;
+                    position: absolute;
+                    top:50%;
+                    margin-top:-10px;
+                    font-size:14px;
+                    span{
+                        color:red; 
+                        font-size:14px;
+                    }
+                }               
+            }
+            .odivRight{              
+                height:100%;
+                line-height:40px;
+                
+                span{
+                    font-size:14px;
+                }
+            }
+        }
+        
+        .shopList{
+            ul{
+                li{
+                    ol{
+                       li{
+                          float:left;
+                          width:50%;
+                          height:30px;
+                          span{
+                              font-size:14px;
+                              font-weight: bold;
+                              margin-left:0.2rem;
+                          }                         
+                       }
+                       li:nth-child(2) {
+                           text-align:right;
+                           span{
+                               margin-right:0.2rem;
+                           }
+                       }
+                    }
+                    
+                    .shopA{
+                        .divo{
+                            width:100%;
+                            height:30px;
+                            
+                            .iconfont{
+                                font-size:12px;
+                                margin-left:20px;
+                            }
+                            span{
+                                font-size:12px;
+                            }
+                        }
+                        .shopListImg{}
+                        .weizhi{
+                            height:30px;
+                            width:100%;
+                            margin-left:20px;
+                            margin-right:20px;
+                            text-indent:-10px;
+                            span{
+                                                         
+                                width:100%;
+                                font-size:12px;
+                                
+                            }
+                        }
+                        .yuyue{
+                            display: flex;
+                            width:100%;
+                            height:50px;
+                           
+                           .yuyueLeft{
+                               width:50%;
+                               height:50px;
+                               text-align:center;
+                               line-height:50px;
+                               input{
+                                  width:150px;
+                                  height:40px;
+                                  background:red;
+                                  border:none;
+                                  border-radius:3px; 
+                                  color:#fff;
+                               }
+                           }
+                           .yuyueRight{
+                               width:50%;
+                               height:50px;
+                               text-align:center;
+                               line-height:50px;
+                               .iconfont{
+                                   font-size:30px;
+                                   color:red;
+                               }
+                           }
+                        }
+                        
+                    }
+                }
+            }
+        }
+    }       
+}
+       
+        
+       
+        
+        
+        
+
+

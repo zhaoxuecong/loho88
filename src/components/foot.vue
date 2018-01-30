@@ -8,7 +8,9 @@
 					<span>首页</span>
 				</router-link>	
 			
-				<router-link to="/" class="footA">
+
+				<router-link to="/goodBuying" class="footA">
+
 					<p>
 						<img src="./img/groupBuy.png">					
 					</p>
@@ -22,7 +24,9 @@
 					<span>客服</span>
 				</router-link>
 			
-				<router-link to="/" class="footA">
+
+				<router-link to="/goodTesting" class="footA">
+
 					<p>
 						<img src="./img/location.jpg">					
 					</p>

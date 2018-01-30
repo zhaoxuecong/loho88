@@ -7,6 +7,7 @@
 </template>
 
 <script>
+	import Swiper from 'swiper';
 	
 	
 export default {
@@ -18,6 +19,7 @@ export default {
 </script>
 
 <style>
+
 	@import '../src/assets/css/swiper.min.css'; 
 @import './assets/iconfont/iconfont.css';
 	*{margin:0;padding:0;}
