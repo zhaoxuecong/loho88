@@ -8,7 +8,7 @@
 			</a>
 			
 		</div>
-		<div class="title">新品上市</div>
+		<div class="title">{{fid}}</div>
 		<div class="menu-right">
 			<ul>
 				<li @click="gotoCart()"><i class="iconfont icon-xiazai1"></i></li>
@@ -60,7 +60,8 @@ export default{
 			str:[],
 			page:0,
 			loading:false,
-			di:"正在加载"
+			di:"正在加载",
+			fid:""
 		}
 	},
 	components:{
@@ -84,8 +85,9 @@ export default{
 			if(this.list.length<31){
 				
 			console.log(this.$route.params.fid,this.$route.params.fad,this.$route.params.fbd);
+			this.fid = this.$route.params.fbd;
 			var id = this.$route.params.fad;
-			axios.get(`/search/?e=222&page=${this.page+1}`)
+			axios.get(`/search/?e=${id}&page=${this.page+1}`)
 			.then((res)=>{
 				console.log(res);
 				this.list = this.list.concat(res.data.result.data);

@@ -41,7 +41,7 @@ export default new Router({
       component:goodMy 
     },
     {							
-      path: '/goodList', 
+      path: '/goodList/:fid/:fad/:fbd', 
       name: 'goodList',
       component: goodList
     },
