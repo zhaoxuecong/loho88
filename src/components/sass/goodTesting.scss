@@ -99,22 +99,22 @@
         
         .odiv{
             width:100%;
-            height:40px;
-            display: flex;
+            height:40px;            
             background: #fff;
-            margin:0.1rem 0;
-            justify-content: space-around;
-                      
+            margin:0.1rem 0;           
+                                 
             .odivLeft{
                 position: relative;
                 height:100%;
-                width:2rem;               
+                width:80%; 
+                float:left;              
                 p{
                     height:20px;
                     width:100%;
                     position: absolute;
                     top:50%;
                     margin-top:-10px;
+                    margin-left:20px;
                     font-size:14px;
                     span{
                         color:red; 
@@ -122,8 +122,10 @@
                     }
                 }               
             }
-            .odivRight{              
+            .odivRight{  
+                float:right;            
                 height:100%;
+                width:20%;
                 line-height:40px;
                 
                 span{
@@ -133,13 +135,21 @@
         }
         
         .shopList{
+            width:100%;
+            border-bottom:1px solid #ccc;
+            background:#fff;
+            
             ul{
                 li{
                     ol{
+                        margin-top:10px;
+                        height:30px;
+                        
                        li{
                           float:left;
                           width:50%;
                           height:30px;
+                          
                           span{
                               font-size:14px;
                               font-weight: bold;
@@ -148,8 +158,21 @@
                        }
                        li:nth-child(2) {
                            text-align:right;
-                           span{
+                           .updownImg{
+                               float:right;
+                               margin-top:10px;
                                margin-right:0.2rem;
+                               width:11px;
+                               height:7px;
+                               background:url(../img/up.jpg) no-repeat center;
+                           }
+                           .updownImgs{
+                               float:right;
+                               margin-top:10px;
+                               margin-right:0.2rem;
+                               width:11px;
+                               height:7px;
+                               background:url(../img/down.jpg) no-repeat center;
                            }
                        }
                     }
@@ -157,7 +180,7 @@
                     .shopA{
                         .divo{
                             width:100%;
-                            height:30px;
+                            height:30px;                           
                             
                             .iconfont{
                                 font-size:12px;
@@ -167,17 +190,25 @@
                                 font-size:12px;
                             }
                         }
-                        .shopListImg{}
+                        .shopListImg{                          
+                            height:2rem;
+                            margin:0 0.2rem;
+                            background:#f0f;
+                            
+                            img{width:100%;height:100%;}
+                            }
+                            
                         .weizhi{
-                            height:30px;
-                            width:100%;
-                            margin-left:20px;
-                            margin-right:20px;
-                            text-indent:-10px;
+                            height:30px;                           
+                            margin:20px;                           
+                            text-indent:-20px;
+                            
+                                                       
                             span{
-                                                         
+                                margin-left:20px;                         
                                 width:100%;
                                 font-size:12px;
+                                
                                 
                             }
                         }
@@ -185,6 +216,7 @@
                             display: flex;
                             width:100%;
                             height:50px;
+                            margin-bottom:10px;                            
                            
                            .yuyueLeft{
                                width:50%;
@@ -198,6 +230,7 @@
                                   border:none;
                                   border-radius:3px; 
                                   color:#fff;
+                                  margin-left:20px;
                                }
                            }
                            .yuyueRight{
@@ -210,8 +243,10 @@
                                    color:red;
                                }
                            }
-                        }
-                        
+                        }                        
+                    }
+                    .shopAs{
+                        display:none;
                     }
                 }
             }

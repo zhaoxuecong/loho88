@@ -12,9 +12,9 @@
 		</div>	
 <!----导航--->		
 		<div class="nav">
-			<ul>
-				<li v-for="item in lookImg">
-					<router-link to="/goodList" class="aa">
+			<ul>    <!--'list'+'/'+item.cid+'/'+item.tid+'/'+item.tag-->
+				<li v-for="item in lookImg"  v-if="loading">
+					<router-link :to="{name:'goodList', params:{fid: item.cid,fad:item.tid, fbd:item.tag}}" class="aa">
 						<div><img :src="item.pic"></div>
 						<span>{{item.tag}}</span>
 					</router-link>					
@@ -23,7 +23,7 @@
 		</div>
 <!----图片--->			
 		<div class="publish">
-			<router-link to="/">
+			<router-link to="/goodList">
 				<img :src=publishImg>
 			</router-link>
 		</div>
@@ -33,15 +33,15 @@
 			<div class="listsA-div">
 				<h2>						
 					<span>{{listsApreson}}</span>
-					<router-link to="/">{{listsApreson}}</router-link>
+					<router-link to="/goodList">{{listsAmore}}</router-link>
 				</h2>
 			</div>
-			<router-link to="/" class="presonImg">
+			<router-link to="/goodList" class="presonImg">
 				<img :src=presonImg>
 			</router-link>			
 			<ol>
-				<li v-for="item in listsAimg">
-					<router-link to="/">
+				<li v-for="item in listsAimg"  v-if="loading">
+					<router-link :to="{name:'detail', params:{fid: item.gid}}">
 						<p>{{item.tag}}</p>
 						<p>{{item.tag_en}}</p>
 						<p><img :src="item.pic"></p>
@@ -56,15 +56,15 @@
 			<div class="newGoodsdiv">
 				<h2>						
 					<span>{{item.title.word}}</span>
-					<router-link to="/">{{item.more.word}}</router-link>
+					<router-link to="/goodList">{{item.more.word}}</router-link>
 				</h2>
 			</div>
-			<router-link to="/" class="newGoodsImg">
+			<router-link to="/goodList" class="newGoodsImg">
 				<img :src="item.img.pic">
 			</router-link>
 			<dl>
 				<dt>
-					<router-link to="/">
+					<router-link :to="{name:'detail', params:{fid:item.show[0].gid}}">
 						<p>{{item.show[0].tag}}</p>
 						<p>{{item.show[0].tag_en}}</p>
 						<p><img :src="item.show[0].pic"></p>
@@ -72,14 +72,14 @@
 				</dt>
 				<dd>
 					<div class="newTop">
-						<router-link to="/">
+						<router-link :to="{name:'detail', params:{fid:item.show[1].gid}}">
 						<p>{{item.show[1].tag}}</p>
 						<p>{{item.show[1].tag_en}}</p>
 						<p><img :src="item.show[2].pic"></p>
 					</router-link>			
 					</div>
 					<div class="newBut">
-						<router-link to="/">
+						<router-link :to="{name:'detail', params:{fid:item.show[2].gid}}">
 						<p>{{item.show[2].tag}}</p>
 						<p>{{item.show[2].tag_en}}</p>
 						<p><img :src="item.show[2].pic"></p>
@@ -135,10 +135,12 @@
 	
 	<!----回到顶部按钮--->		
 		
-		<div class="toTop">
+		<!--<div class="toTop">
 			<i class="iconfont">&#xe66b;</i>
-		</div>
+		</div>-->
 		
+		<backtop　:scrollmyself = 'true'></backtop>
+	
 	</section>	
 
 </template>
@@ -147,7 +149,7 @@
 
 <script>
 	import Swiper from 'swiper';
-	
+	import backtop from './backtop';
 	import axios from 'axios';
 export default{
 	name:'sections',
@@ -170,11 +172,14 @@ export default{
 
 		}
 	},
+	components:{
+		backtop
+	},
 	
 	mounted:function(){		
 			axios.get('/index')
 		.then((response) => {
-			console.log(response);		
+			console.log(response);
 			this.lunboImg = response.data.result.focus;
 			this.lookImg = response.data.result.cates;
 			this.publishImg = response.data.result.ad[0].pic;
@@ -184,7 +189,7 @@ export default{
 			this.listsAimg = response.data.result.popular.show;
 			this.newGoodsImg = response.data.result.classify;
 				
-			console.log(this.newGoodsImg[0]);	
+			console.log();	
 			//console.log(this.publishImg);	
 			this.$nextTick(function(){
 				var sp = new Swiper(".swiper-container", {

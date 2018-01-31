@@ -79,7 +79,8 @@ export default{
 		getData(){
 			if(this.list.length<31){
 				
-			
+			console.log(this.$route.params.fid,this.$route.params.fad,this.$route.params.fbd);
+			var id = this.$route.params.fad;
 			axios.get(`/search/?e=222&page=${this.page+1}`)
 			.then((res)=>{
 				console.log(res);
