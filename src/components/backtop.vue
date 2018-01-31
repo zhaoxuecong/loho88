@@ -67,7 +67,7 @@ export default {
 	    z-index: 1000;
 	    background: #fff;
 	    right: 0.12rem;
-	    bottom: 0.12rem;
+	    bottom: 0.82rem;
 	    width: 0.46rem;
 	    height: 0.46rem;
 	    justify-content: center;

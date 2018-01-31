@@ -12,7 +12,7 @@
 				<i class="iconfont">&#xe785;</i>
 			</div>
 		</header>
-		
+		<!--<mt-loadmore :top-method="loadTop" :bottom-method="loadBottom" :bottom-all-loaded="allLoaded" ref="loadmore">-->
 		<section>
 			<nav>
 				<div class="list">
@@ -40,15 +40,15 @@
 				</div>
 			</div>
 			
-			<div class="shopList">
+			<div class="shopList" v-for="(item,index) in shopAimg" v-if="loading">
 				<ul>
 					<li>
-						<ol>
+						<ol class="shopListOl" @click="hideShopA(index)">
 							<li>
-								<span>海淀圣熙8号店</span>
+								<span>{{item.catName}}</span>
 							</li>
-							<li>
-								<span>></span>
+							<li class="lis">
+								<div class="updownImg" id="updown"></div>
 							</li>
 						</ol>
 						
@@ -59,13 +59,11 @@
 							</div>
 							
 							<div class="shopListImg">
-								<img src="">
+								<img :src="item.store_image">
 							</div>
 							
 							<div class="weizhi">
-								<span>
-									地址:北京市海淀区学清路甲8号圣熙8号购物中心一层A015
-								</span>
+								<span>{{item.chineseAddress}}</span>																	
 							</div>
 							
 							<div class="yuyue">
@@ -79,30 +77,56 @@
 						</div>	
 					</li>
 				</ul>
-			</div>
-			
+			</div>			
 		</section>
+		 <!--</mt-loadmore>-->
 	</div>
 </template>
 
 <script>
+	//import { Toast } from 'mint-ui';
 import axios from 'axios';	
 export default{
 	name:'goodTesting',
 	data (){
 		return {
+			loading:true,
+			flag:true,
 			shopAimg:[]
 		}
 	},
 	mounted:function(){		
 			axios.get('/store/302')
 		.then((response) => {
-			console.log(response);		
+			//console.log(response);		
 			this.shopAimg = response.data.result.stores;
-			console.log(this.shopAimg[0].store_image);	
+			var len = this.shopAimg.length;
+			for(var i=0;i<len; i++){
+				this.shopAimg[i].store_image = "http://image.loho88.com/" + this.shopAimg[i].store_image;
+				
+			}
+			
 		})
 		
 	},
+	methods:{
+		hideShopA : function(index){			
+			if($(".shopA").eq(index).css("display")=="block"){
+				$(".shopA").eq(index).css("display","none");
+				$(".shopListOl>.lis>div").eq(index).removeClass().addClass("updownImgs");
+			}else{
+				$(".shopA").eq(index).css("display","block");
+				$(".shopListOl>.lis>div").eq(index).removeClass().addClass("updownImg");
+			}			
+		},
+		/*loadTop() {
+	      console.log("loadTop");
+	      setTimeout(() => {
+	        Toast('数据重新加载完成');
+	        this.$refs.loadmore.onTopLoaded();
+	      }, 3000)
+	    },*/
+	}
 }	
 </script>
 

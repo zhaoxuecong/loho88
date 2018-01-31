@@ -49,26 +49,29 @@
 		
 		<div class="buyList">
 			<ul>
-				<li>
-					<div class="buyListA">
-						
-						<img src="./img/1.jpg">
-					</div>
-					<div class="buyListB">						
-						价值980元 1.552依视路超薄A3眼镜套餐代金...						
-					</div>
-					<div class="buyListC">
-						<p class="p1">
-							<span>优惠价:￥</span>
-							<i>598</i>
-						</p>
-						<p class="p2">
-							<span>￥980</span>
-						</p>					
-					</div>
-					<div class="buyListD">
-						<input type="button" value="点击下单购买">
-					</div>
+				<li>					
+						<div class="buyListA">
+							
+							<img src="./img/1.jpg">
+						</div>
+						<div class="buyListB">						
+							价值980元 1.552依视路超薄A3眼镜套餐代金...						
+						</div>
+						<div class="buyListC">
+							<p class="p1">
+								<span>优惠价:￥</span>
+								<i>598</i>
+							</p>
+							<p class="p2">
+								<span>￥980</span>
+							</p>					
+						</div>
+						<div class="buyListD">
+							<router-link to="/goodList">
+								<input type="button" value="点击下单购买">
+							</router-link>	
+						</div>
+					
 				</li>
 				
 				<li>
@@ -224,7 +227,7 @@
 </template>
 
 <script>
-	
+import axios from 'axios';	
 export default{
 	name:'goodBuying',
 	data (){
@@ -233,19 +236,14 @@ export default{
 		}
 	},
 	mounted:function(){
-		/*var buyB = document.querySelector(".buyB");
-		var buyNav = document.querySelector(".buyNav");
-		console.log(buyNav);
-		if(buyNav.style.display = "none"){
-			buyB.onclick = function(){
-				buyNav.style.display = "block";
-			}
-		}
-		if(buyNav.style.display = "block"){
-			buyB.onclick = function(){
-				buyNav.style.display = "none";
-			}
-		}*/
+		axios.get('/index')
+		.then((response) => {
+			console.log(response);		
+						
+		})	
+		
+	},
+	methods:{
 		
 	}
 }
