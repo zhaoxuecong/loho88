@@ -1,14 +1,16 @@
 <template>
 	<div class="detail">
 		<div class="top">		
-			<div class="back-left">
+			<div class="back-left" @click="$router.back(-1)">
 				<a href="javascript:;">
 					<i class="iconfont icon-fanhui"></i>
 				</a>			
 			</div>
 			<div class="menu-right">
 				<ul>
-					<li><i class="iconfont icon-xiazai1"></i></li>
+					<li @click="gotoCart()">
+						<i class="iconfont icon-xiazai1"></i>
+					</li>
 					<li><i class="iconfont icon-liebiao"></i></li>
 				</ul>
 			</div>
@@ -31,7 +33,10 @@
 						<p>{{detail.goodsName}}</p>
 					</div>
 					<div class="small-3 column">
-						<p>分享</p>
+						<a>
+							<i class="iconfont icon-fenxiang2"></i>
+							<p>分享</p>
+						</a>
 					</div>
 				</div>
 				<ul class="detail-info">
@@ -41,14 +46,14 @@
 				</ul>
 				<ul class="detail-promiseTag">
 					<li v-for="item1 in promiseTag">
-						<i></i>
+						<i class="iconfont icon-dui"></i>
 						<span>{{item1}}</span>
 					</li>
 				</ul>
 				<div class="detail-color">
 					<p>颜色选择</p>
 					<ul>
-						<li v-for="item2 in color">{{item2.color}}</li>
+						<li v-for="(item2,index) in color" @click="changeflag(index)" :class="{'bright':ind===index}">{{item2.color}}</li>
 					</ul>
 				</div>
 				<div class="recommend" v-if="unioned">
@@ -107,16 +112,16 @@
 		<div class="footer">
 			<div class="foot-left">
 				<a href="javascript:;">
-					<i class="iconfont icon-kefu"></i>
+					<i class="iconfont icon-liaotian"></i>
 					<span>客服</span>
 				</a>
 				<a href="javascript:;">
-					<i></i>
+					<i class="iconfont icon-shoucang"></i>
 					<span>收藏</span>
 				</a>
 			</div>
-			<div class="shopcar">
-				<span>加入购物车</span>
+			<div class="shopcar" @click="gotoCart()">				
+				<span>加入购物车</span>							
 			</div>
 			<div class="nearby">
 				<span>预约附近验光点</span>
@@ -133,6 +138,7 @@ export default {
 	
 	data() {
 		return {
+			ind:'',
 			detail: null,
 			color:[],
 			lunboImg:[],
@@ -141,6 +147,14 @@ export default {
 			goodsimg:null,
 			goodsimg2:null,
 			arrimgs:""
+		}
+	},
+	methods:{
+		changeflag: function(index){
+			this.ind = index;
+		},
+		gotoCart(){
+			this.$router.history.push({name:'goodCart'})
 		}
 	},
 	mounted() {
@@ -179,8 +193,7 @@ export default {
 				      el: '.swiper-pagination',
 				    },
 				})
-				$(".goods-img-list p img").css("width","100%");
-				console.log($(".goods-img-list p img"))
+				$(".goods-img-list p img").css("width","100%");				
 			})
 		})
 		

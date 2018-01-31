@@ -7,7 +7,7 @@
 		<div class="logo"></div>
 		<div class="right">
 			<ul>
-				<li>
+				<li  @click="gotoCart()">
 					<i class="iconfont">&#xe600;</i>
 				</li>
 				<li>
@@ -26,6 +26,11 @@ export default{
 	data (){
 		return {
 			
+		}
+	},
+	methods:{
+		gotoCart(){
+			this.$router.history.push({name:'goodCart'})
 		}
 	}
 	

@@ -2,7 +2,7 @@
 <div class="goodList">
 	<div class="top">
 		
-		<div class="back-left">
+		<div class="back-left" @click="$router.back(-1)">
 			<a href="javascript:;">
 				<i class="iconfont icon-fanhui"></i>
 			</a>
@@ -11,7 +11,7 @@
 		<div class="title">新品上市</div>
 		<div class="menu-right">
 			<ul>
-				<li><i class="iconfont icon-xiazai1"></i></li>
+				<li @click="gotoCart()"><i class="iconfont icon-xiazai1"></i></li>
 				<li><i class="iconfont icon-liebiao"></i></li>
 			</ul>
 		</div>
@@ -27,7 +27,7 @@
 		<div class="goods">
 			<ul v-infinite-scroll="loadMore"
   infinite-scroll-disabled="loading"
-  infinite-scroll-distance="0">
+  infinite-scroll-distance="10">
 				<li v-for="item in list">
 					<router-link :to="{name:'detail', params:{fid: item.goodsId}}">
 					<p class="pic"><img :src="item.img" /></p>
@@ -41,7 +41,7 @@
 			</ul>
 		</div>
 		<div class="text-center">
-			<span>已经到底部了</span>
+			<span>{{di}}</span>
 		</div>
 		<backtop　:scrollmyself = 'true'></backtop>
 	</div>
@@ -59,13 +59,17 @@ export default{
 			list:[],
 			str:[],
 			page:0,
-			loading:false
+			loading:false,
+			di:"正在加载"
 		}
 	},
 	components:{
 		backtop
 	},
 	methods:{
+		gotoCart(){
+			this.$router.history.push({name:'goodCart'})
+		},
 		loadMore() {
 			
 		  this.loading = true;
@@ -90,7 +94,7 @@ export default{
 				}
 				console.log(this.list);
 				this.page++;
-				
+				this.di = "已经到底部了";
 			})
 			}
 		}

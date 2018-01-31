@@ -1,0 +1,109 @@
+.goodCart{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background: #ccc;
+}
+.cart-top{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index:100;
+    background:#fff;
+    width: 100%;
+    height: 0.5rem;
+    line-height: 0.5rem;
+    border-bottom: 1px solid #e1e1e1;   
+}
+.back-left{
+    
+    z-index: 99;
+    a{
+        display: block;
+       height: 0.5rem;
+        width: 0.5rem;
+        text-align: center;
+        i{              
+            font-size: 24px;
+            
+        } 
+    }    
+}
+.title{
+    text-align: center;
+    margin: auto;
+    height: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    i{
+        font-size: 24px;
+    }    
+}
+.menu-right{               
+    height: 0.5rem;
+    width: 0.5rem;
+    text-align: center;
+    i{
+        font-size: 24px;
+    }  
+}
+.section{
+    overflow-y: auto;
+    flex: 1;
+}
+.login-info{
+    color: #666;
+    font-size: 12px;
+    text-align: center;
+    vertical-align: top;
+    background: #f9f9f9;
+    box-shadow: 0 1px 1px rgba(0,0,0,.15);
+    .info-left{
+        display: inline-block;
+        width: 70%;
+        text-align: left;
+        margin-top: 0.12rem;
+        margin-bottom: 0.1rem;
+    }
+    .info-right{
+        display: inline-block;
+        height: 0.4rem;
+        line-height: 0.4rem;
+        margin-left: 0.1rem;
+        vertical-align: top;
+        button{
+            display: inline-block;
+            background: #f15353;
+            border-radius: 3px;
+            padding: 0.04rem 0.12rem;
+            border: none;
+            color: #fff;
+        }
+    }
+}
+.cart-body{
+    padding-bottom: 0.5rem;
+    margin: 0 0.1rem;
+    .shop-tip{
+        margin: 0.25rem 0;
+        padding: 0.1rem;
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 0.05rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-size: 14px;
+        .icon-cart i{
+            font-size: 40px;
+        }
+        p{
+            a{
+                text-decoration: underline;
+                color: #06a;
+            }
+        }
+    }
+}
