@@ -11,7 +11,10 @@
 		<div class="title">{{fid}}</div>
 		<div class="menu-right">
 			<ul>
-				<li @click="gotoCart()"><i class="iconfont icon-xiazai1"></i></li>
+				<li @click="gotoCart()">
+					<i class="iconfont icon-xiazai1"></i>
+					<span>{{$store.state.cart.length}}</span>
+				</li>
 				<li><i class="iconfont icon-liebiao"></i></li>
 			</ul>
 		</div>
