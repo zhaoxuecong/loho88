@@ -9,6 +9,7 @@
 			<ul>
 				<li  @click="gotoCart()">
 					<i class="iconfont">&#xe600;</i>
+					<span>{{$store.state.cart.length}}</span>
 				</li>
 				<li>
 					<i class="iconfont">&#xe66e;</i>

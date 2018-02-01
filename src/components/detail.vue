@@ -10,6 +10,7 @@
 				<ul>
 					<li @click="gotoCart()">
 						<i class="iconfont icon-xiazai1"></i>
+						<span>{{$store.state.cart.length}}</span>
 					</li>
 					<li><i class="iconfont icon-liebiao"></i></li>
 				</ul>
@@ -108,6 +109,7 @@
 					{{arrimgs}}
 				</div>
 			</div>
+			<backtop　:scrollmyself = 'true'></backtop>
 		</div>
 		<div class="footer">
 			<div class="foot-left">
@@ -120,7 +122,7 @@
 					<span>收藏</span>
 				</a>
 			</div>
-			<div class="shopcar" @click="gotoCart()">				
+			<div class="shopcar" @click="addtoCart(detail)">				
 				<span>加入购物车</span>							
 			</div>
 			<div class="nearby">
@@ -131,6 +133,7 @@
 </template>
 
 <script>
+import backtop from './backtop';
 import Swiper from 'swiper';
 import axios from 'axios';
 export default {
@@ -138,7 +141,7 @@ export default {
 	
 	data() {
 		return {
-			ind:'',
+			ind:''||0,
 			detail: null,
 			color:[],
 			lunboImg:[],
@@ -149,12 +152,22 @@ export default {
 			arrimgs:""
 		}
 	},
+	components:{
+		backtop
+	},
 	methods:{
 		changeflag: function(index){
 			this.ind = index;
 		},
 		gotoCart(){
 			this.$router.history.push({name:'goodCart'})
+		},
+		addtoCart(detail){
+			// 启动action
+			// dispatch("action的名字")
+			//console.log(this.$store.dispatch("addToCartA", detail))
+			this.$store.dispatch("addToCartA", detail);			
+			this.$router.history.push({name:'goodCart'});
 		}
 	},
 	mounted() {
