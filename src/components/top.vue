@@ -37,6 +37,6 @@ export default{
 }	
 </script>
 
-<style lang="scss" src="./sass/top.scss">
+<style lang="scss" src="./sass/top.scss" scoped>
 	
 </style>

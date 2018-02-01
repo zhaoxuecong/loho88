@@ -1,7 +1,7 @@
 <template>
 	<div class="goodTesting">
 		<header>
-			<div class="left">
+			<div class="left" @click="$router.back(-1)">
 				<i class="iconfont">&#xe610;</i>
 			</div>
 			<div class="middle">
@@ -71,7 +71,7 @@
 									<input type="button" value="免费预约直营店验光">
 								</div>
 								<div class="yuyueRight">
-									<i class="iconfont">&#xe615;</i>
+									<i class="iconfont">&#xe66f;</i>
 								</div>									
 							</div>
 						</div>	
@@ -130,6 +130,6 @@ export default{
 }	
 </script>
 
-<style lang="scss" src="./sass/goodTesting.scss">
+<style lang="scss" src="./sass/goodTesting.scss" scoped>
 	
 </style>

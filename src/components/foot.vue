@@ -33,7 +33,7 @@
 					<span>附近体验店</span>
 				</router-link>
 			
-				<router-link to="/" class="footA">
+				<router-link to="/goodMy" class="footA">
 					<p>
 						<img src="./img/my.jpg">					
 					</p>
@@ -56,6 +56,6 @@ export default{
 }	
 </script>
 
-<style lang="scss" src="./sass/foot.scss">
+<style lang="scss" src="./sass/foot.scss" scoped>
 	
 </style>
