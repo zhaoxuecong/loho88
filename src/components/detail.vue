@@ -164,8 +164,6 @@ export default {
 		},
 		addtoCart(detail){
 			// 启动action
-			// dispatch("action的名字")
-			//console.log(this.$store.dispatch("addToCartA", detail))
 			this.$store.dispatch("addToCartA", detail);			
 			this.$router.history.push({name:'goodCart'});
 		}
