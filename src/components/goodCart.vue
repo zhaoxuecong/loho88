@@ -46,30 +46,30 @@
 			</div>
 			<div v-if="showflag">
 				<ul class="addshop">					
-					<li v-for="item in $store.state.cart">
+					<li v-for="(item,index) in $store.state.cart">
 						<div class="head">
 							<label>
 								<input type="checkbox" checked /><b>单品</b>
 							</label>
-							<span>￥{{item.shopPrice}}</span>
+							<span>￥{{priceTotal}}</span>
 						</div>
 						<div class="cartshop">
 							<a><img :src="item.pics[0]" /></a>
 							<div class="goods-detail">
 								<p class="goods-title">{{item.goodsName}}</p>
-								<p class="goods-color">颜色：</p>
+								<p class="goods-color">颜色：黑色</p>
 								<div class="goods-price"><span class="pri">￥{{item.shopPrice}}</span><span>x1</span></div>
 							</div>
 						</div>
 						<div class="goodsfoot">
 							<div class="del">
-								<a>删除</a>
+								<a @click="removegoods(index)">删除</a>
 								<a>促销优惠</a>
 							</div>					
 							<div class="goods-num">
-								<span>-</span>
-								<input type="number" value="1" />
-								<span class="jia">+</span>
+								<span class="jian" @click="shopsjian(index)">-</span>
+								<input id="num" type="text" v-model.number="item.isBookIng" />
+								<span class="jia" @click="shopsAdd(index)">+</span>
 							</div>
 						</div>
 					</li>					
@@ -95,24 +95,47 @@
 	</div>
 </template>
 
-<script>
-	
+<script>	
 export default{
 	name:'goodCart',
 	data (){
 		return {
 			flag:false,
 			showflag:false,
-			nogoodflag:true
+			nogoodflag:true,
+			isBookIng:1
 						
+		}
+	},
+	computed:{
+		priceTotal:function(index){
+			var price = 0;
+						
+			for(var i=0;i<this.$store.state.cart.length;i++){
+				console.log(parseInt(this.$store.state.cart[i].shopPrice))
+				price+=parseInt(this.$store.state.cart[i].shopPrice)*parseInt(this.$store.state.cart[i].isBookIng);
+			}
+			return price;
 		}
 	},
 	methods:{
 		changeflag:function(){
 			this.flag=!this.flag;
+		},
+		shopsAdd:function(index){
+			var buy_nums=this.$store.state.cart[index].isBookIng;
+			this.$store.state.cart[index].isBookIng++;
+		},
+		shopsjian:function(index){
+			var buy_nums=this.$store.state.cart[index].isBookIng;
+			if(buy_nums<2){
+				return false;
+			}
+			this.$store.state.cart[index].isBookIng--;
+		},
+		removegoods:function(index){
+			this.$store.state.cart.splice(index,1);
 		}
-		
-		
 	},
 	mounted(){
 		if(localStorage.getItem("data")) {

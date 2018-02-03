@@ -92,7 +92,7 @@ export default{
 			var id = this.$route.params.fad;
 			axios.get(`/search/?e=${id}&page=${this.page+1}`)
 			.then((res)=>{
-				console.log(res);
+				console.log(res.data.result.data);
 				this.list = this.list.concat(res.data.result.data);
 				var lengths = this.list.length;
 				for(var i = this.page*20;i < lengths;i ++){

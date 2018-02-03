@@ -185,12 +185,15 @@ export default {
 			this.detail = res.data.result.info;
 			this.color = res.data.result.models;
 			this.promiseTag = this.detail.promiseTag;
-			this.unioned = res.data.result.unioned[0];
-			//console.log(this.unioned)
-			var Image1 = "http://image.loho88.com/" + this.unioned.goods[0].goodsThumbMin;
-			var Image2 = "http://image.loho88.com/" + this.unioned.goods[1].goodsThumbMin;
-			this.goodsimg = Image1;
-			this.goodsimg2 = Image2;
+			if(res.data.result.unioned[0]){
+				this.unioned = res.data.result.unioned[0];
+				//console.log(this.unioned)
+				var Image1 = "http://image.loho88.com/" + this.unioned.goods[0].goodsThumbMin;
+				var Image2 = "http://image.loho88.com/" + this.unioned.goods[1].goodsThumbMin;
+				this.goodsimg = Image1;
+				this.goodsimg2 = Image2;
+			}
+			
 			//console.log(this.goodsimg)
 			this.lunboImg = this.detail.pics;
 			var lengths = this.lunboImg.length;
