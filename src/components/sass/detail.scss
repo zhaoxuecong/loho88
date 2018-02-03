@@ -60,6 +60,55 @@
         }
     }   
 }
+.skip{
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    top:0.5rem;
+    right: 0.06rem;
+    margin-top: 0.13rem;
+    border: 1px solid #e1e1e1;
+    background: #fff;
+    z-index: 11;
+    li{
+        line-height: 0.23rem;
+        a{
+            display: block;
+            padding: 0.12rem 0.36rem 0.12rem 0.24rem;
+            font-size: 14px;
+            color: #555;
+            i{
+                font-size: 16px;
+                margin-right: 0.1rem;
+            }
+        }
+    }
+}
+.skip:before,.skip:after{
+    content: "";
+    display: block;
+    width: 0;
+    height: 0;
+    position: absolute;
+}
+.skip:before{
+    left: auto;
+    right: 0.12rem;
+    border: 0.06rem inset;
+    border-color: transparent transparent #fff;
+    border-bottom-style: solid;
+    top: -0.12rem;
+    z-index: 99;    
+}
+.skip:after{
+    right: 0.12rem;
+    border: 0.07rem inset;
+    border-color: transparent transparent #ccc;
+    border-bottom-style: solid;
+    top: -0.14rem;
+    z-index: 88;    
+}
 
 .section{
     overflow-y: auto;

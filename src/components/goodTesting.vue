@@ -8,10 +8,25 @@
 				<span>查找体验店</span>
 			</div>
 			<div class="right">
-				<i class="iconfont">&#xe600;</i>
-				<i class="iconfont">&#xe785;</i>
+				<router-link :to="'/goodCart'">
+					<i class="iconfont">&#xe600;</i>
+					<span>{{$store.state.cart.length}}</span>
+				</router-link>				
+				<i class="iconfont" @click="gohome()">&#xe785;</i>
 			</div>
 		</header>
+		<ul class="skip" v-show="showflag">
+			<li>
+				<router-link :to="'/goodMy'">
+					<i class="iconfont icon-wode"></i>会员中心
+				</router-link>						
+			</li>
+			<li>
+				<router-link :to="'/'">
+					<i class="iconfont icon-shouye1"></i>首页
+				</router-link>						
+			</li>
+		</ul>
 		<!--<mt-loadmore :top-method="loadTop" :bottom-method="loadBottom" :bottom-all-loaded="allLoaded" ref="loadmore">-->
 		<section>
 			<nav>
@@ -92,7 +107,8 @@ export default{
 		return {
 			loading:true,
 			flag:true,
-			shopAimg:[]
+			shopAimg:[],
+			showflag:false
 		}
 	},
 	mounted:function(){		
@@ -118,6 +134,9 @@ export default{
 				$(".shopA").eq(index).css("display","block");
 				$(".shopListOl>.lis>div").eq(index).removeClass().addClass("updownImg");
 			}			
+		},
+		gohome:function(){
+			this.showflag=!this.showflag;
 		},
 		/*loadTop() {
 	      console.log("loadTop");

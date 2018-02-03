@@ -18,8 +18,10 @@
 					</router-link>						
 				</li>
 				<li>
-					<i class="iconfont icon-huiyuan21"></i>
-					<span>会员中心</span>
+					<router-link :to="'/goodMy'">
+						<i class="iconfont icon-huiyuan21"></i>
+						<span>会员中心</span>
+					</router-link>					
 				</li>
 				<li>
 					<i class="iconfont icon-icon-test"></i>

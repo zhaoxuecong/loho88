@@ -9,7 +9,11 @@
 				<span id="loadTitle">登录</span>
 			</div>
 			<div class="right">
-				<i class="iconfont">&#xe600;</i>
+				<router-link :to="'/goodCart'">
+					<i class="iconfont">&#xe600;</i>
+					<span>{{$store.state.cart.length}}</span>
+				</router-link>
+				
 				<i class="iconfont" @click="creatDiv()">&#xe785;</i>
 				
 				<div class="mesgList" :class="{mesgLists:flag}">

@@ -15,11 +15,22 @@
 					<i class="iconfont icon-xiazai1"></i>
 					<span>{{$store.state.cart.length}}</span>
 				</li>
-				<li><i class="iconfont icon-liebiao"></i></li>
+				<li @click="gohome()"><i class="iconfont icon-liebiao"></i></li>				
 			</ul>
-		</div>
-		
+		</div>		
 	</div>
+	<ul class="skip" v-show="flag">
+		<li>
+			<router-link :to="'/goodMy'">
+				<i class="iconfont icon-wode"></i>会员中心
+			</router-link>						
+		</li>
+		<li>
+			<router-link :to="'/'">
+				<i class="iconfont icon-shouye1"></i>首页
+			</router-link>						
+		</li>
+	</ul>
 	<div class="content">		
 		<ul class="nav">
 			<li class="hit">综合</li>
@@ -64,7 +75,8 @@ export default{
 			page:0,
 			loading:false,
 			di:"正在加载",
-			fid:""
+			fid:"",
+			flag:false
 		}
 	},
 	components:{
@@ -103,6 +115,9 @@ export default{
 				this.di = "已经到底部了";
 			})
 			}
+		},
+		gohome:function(){
+			this.flag=!this.flag;
 		}
 	},
 	mounted(){

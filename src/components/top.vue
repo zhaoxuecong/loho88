@@ -12,7 +12,9 @@
 					<span>{{$store.state.cart.length}}</span>
 				</li>
 				<li>
-					<i class="iconfont">&#xe66e;</i>
+					<router-link :to="'/goodMy'">
+						<i class="iconfont">&#xe66e;</i>
+					</router-link>					
 				</li>
 			</ul>			
 		</div>		
