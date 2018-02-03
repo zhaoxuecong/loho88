@@ -49,9 +49,9 @@
 					<li v-for="(item,index) in $store.state.cart">
 						<div class="head">
 							<label>
-								<input type="checkbox" checked /><b>单品</b>
+								<input type="checkbox" :checked="checked" /><b>单品</b>
 							</label>
-							<span>￥{{priceTotal}}</span>
+							<span>￥{{item.shopPrice}}</span>
 						</div>
 						<div class="cartshop">
 							<a><img :src="item.pics[0]" /></a>
@@ -76,17 +76,17 @@
 				</ul>
 				<div class="del-goods">
 					<div class="dian">
-						<label class="">
-							<input type="checkbox" checked />
+						<label class="" @click="changeChe()">
+							<input type="checkbox" :checked="checked" />
 						</label>
 						<a class="cart-del">删除选中</a>
 					</div>
 					
-					<a class="cart-cle">清空购物车</a>
+					<a class="cart-cle" @click="cleargoods()">清空购物车</a>
 				</div>
 				<div class="footer">
 					<div class="total-price">
-						合计（不含运费）：<span>￥799</span>
+						合计（不含运费）：<span>￥{{priceTotal}}</span>
 					</div>
 					<button class="btn">结算（{{$store.state.cart.length}}）</button>
 				</div>
@@ -103,7 +103,9 @@ export default{
 			flag:false,
 			showflag:false,
 			nogoodflag:true,
-			isBookIng:1
+			isBookIng:1,
+			num:1,
+			checked:true
 						
 		}
 	},
@@ -112,7 +114,8 @@ export default{
 			var price = 0;
 						
 			for(var i=0;i<this.$store.state.cart.length;i++){
-				console.log(parseInt(this.$store.state.cart[i].shopPrice))
+				this.num = $("#num").val();
+				console.log(this.num)
 				price+=parseInt(this.$store.state.cart[i].shopPrice)*parseInt(this.$store.state.cart[i].isBookIng);
 			}
 			return price;
@@ -135,6 +138,15 @@ export default{
 		},
 		removegoods:function(index){
 			this.$store.state.cart.splice(index,1);
+		},
+		cleargoods:function(){
+			this.showflag=false;
+			this.nogoodflag = true;
+			this.$store.state.cart.isBookIng=0;
+			this.$store.state.cart.length=0;
+		},
+		changeChe:function(){
+			this.checked=!this.checked;
 		}
 	},
 	mounted(){
