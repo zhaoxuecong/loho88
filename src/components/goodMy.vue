@@ -2,7 +2,7 @@
 	<div class="goodMy">
 	<!---头部---->		
 		<header>
-			<div class="left" @click="loadLeft()">
+			<div class="left" @click="$router.back(-1)">
 				<i class="iconfont">&#xe610;</i>
 			</div>
 			<div class="middle">
@@ -35,13 +35,13 @@
 			</div>
 			
 			<ul class="my-ul">
-				<li>
+				<li class="loads" @click="loadsNew()">
 					<div class="divp">
 						<span>账号密码登录</span>
 					</div>
 				</li>
-				<li>
-					<span>手机号码快速登录</span>
+				<li class="regists" @click="registsNew()">
+					<span>用户账号注册</span>
 				</li>
 			</ul>
 			
@@ -71,40 +71,43 @@
 					忘记密码？
 				</span>
 			</div>
+		
+			
+		<!---注册页面---->		
+			<div class="registSection">
+			
+				<div id="regName" class="reg">
+					<div class="regLeft">
+						<span>账号</span>
+					</div>
+					<div class="regRight">
+						<input type="text" placeholder="请输入账号" v-model="username">
+					</div>									
+				</div>
+		
+				<div id="regPsw" class="reg">
+					<div class="regLeft">
+						<span>密码</span>
+					</div>
+					<div class="regRight">
+						<input type="password" placeholder="请输入密码" v-model="psw">	
+					</div>				
+				</div>
+			
+				<div id="regPsws" class="reg">
+					<div class="regLeft">
+						<span>确认密码</span>
+					</div>
+					<div class="regRight">
+						<input type="text" placeholder="请再次确认密码" class="registPsws">	
+					</div>
+				</div>
+			
+		</div>
+			
 		</section>
 	
 	
-	<!---注册页面---->	
-		<div class="registSection">
-			
-			<div id="regName" class="reg">
-				<div class="regLeft">
-					<span>账号</span>
-				</div>
-				<div class="regRight">
-					<input type="text" placeholder="请输入账号" class="registName">
-				</div>									
-			</div>
-	
-			<div id="regPsw" class="reg">
-				<div class="regLeft">
-					<span>密码</span>
-				</div>
-				<div class="regRight">
-					<input type="text" placeholder="请输入密码" class="registPsw">	
-				</div>				
-			</div>
-		
-			<div id="regPsws" class="reg">
-				<div class="regLeft">
-					<span>确认密码</span>
-				</div>
-				<div class="regRight">
-					<input type="text" placeholder="请再次确认密码" class="registPsws">	
-				</div>
-			</div>
-			
-		</div>
 	
 		
 	<!---底部---->	
@@ -132,16 +135,15 @@ export default{
 	data (){
 		return {
 			flag:true,
+			username:"",
+			psw:""
 		}
 	},
 	mounted:function(){
 		axios.get('/index')
 		.then((response) => {
 			console.log(response);		
-			
-				
-			
-			
+						
 		})
 	},
 	methods:{
@@ -150,39 +152,46 @@ export default{
 			$(".loadBtn").css("width","100%");											
 		},
 		registing:function(){
-			$(".loadBtn").css("display","none");
-			$(".registBtn").css({
-					"width":"100%",
-					"background":"#ccc",
-					"color":"#808080"
-				});
-			$("#loadTitle").html("账号快速注册");
-			$(".loadSection").css("display","none");
-			$(".registSection").css("display","block");
+			console.log(this.username)
+			axios.post('/api/goodMy',{
+				username : this.username,
+				psw : this.psw
+			})
+			.then(function(response){
+				console.log(response);
+			})
+			.catch(function(error){
+				console.log(error);
+			})
+						
 		},
-		loadLeft:function(){
-			if($(".loadSection").css("display")=="block"){
-				$(".loadSection").css("display","none");
-				$(".registSection").css("display","block");
-			}
-			if($(".loadSection").css("display")=="none"){
-				$(".loadSection").css("display","block");
-				$(".registSection").css("display","none");
-				$(".registBtn").css({
-					"width":"50%",
-					"background":"#fff",
-					"color":"#000"
-				});
-				$(".loadBtn").css({
-					"display":"block",
-					"width":"50%",
-					"background":"#ccc",
-					"color":"#808080"
-				});
-			}
-		},
+		
 		creatDiv:function(){
 				this.flag = !this.flag
+		},
+		registsNew:function(){
+			$(".my-ol").css("display","none");
+			$(".xxdiv").css("display","none");			
+			$(".loads").css("border","none");
+			$(".registSection").css("display","block");
+			$(".divp").children("span").css("color","#000");
+			$(".regists").css("border-bottom","2px solid #f00");											
+			$(".regists").children("span").css("color","red");
+			$(".loadBtn").css("display","none");
+			$(".registBtn").css("display","block");
+			$("#loadTitle").html("注册");
+		},
+		loadsNew:function(){
+			$(".my-ol").css("display","block");
+			$(".xxdiv").css("display","block");			
+			$(".registSection").css("display","none");
+			$(".divp").children("span").css("color","red");
+			$(".loads").css("border-bottom","2px solid #f00");
+			$(".regists").css("border","none");					
+			$(".regists").children("span").css("color","#000");
+			$(".loadBtn").css("display","block");
+			$(".registBtn").css("display","none");
+			$("#loadTitle").html("登录");
 		}
 	}
 }	

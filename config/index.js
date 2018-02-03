@@ -16,6 +16,12 @@ module.exports = {
             changeOrigin: true, //开启代理
             pathRewrite: { '^/': '/' }  //对访问路径进行替换操作
        },
+       
+      '/api':{
+      				target:'http://localhost/3000',
+      				changeOrigin:true,
+        				pathRewrite: { '^/api': '/api' } 
+      }
 
     },
 
